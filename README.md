@@ -20,6 +20,8 @@ Fundamentals.csv contains company-level financial statement data for firms liste
   - clean_fundamentals_output.csv
   - fundamentals_inspection.txt
 - venv/
+- others/
+  - NYSE_Fundamentals_Report.txt
 
 ## Data Inspection Variables and Their Purpose
 - df_shape (fundamentals_df.shape)
