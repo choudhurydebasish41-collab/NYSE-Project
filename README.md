@@ -20,6 +20,25 @@ Fundamentals.csv contains company-level financial statement data for firms liste
   - clean_fundamentals_output.csv
   - fundamentals_inspection.txt
 - venv/
+  - bin/
+    - activate
+    - activate.csh
+    - activate.fish
+    - Activate.ps1
+    - f2yp
+    - numpy-config
+    - pip
+    - pip3
+    - pip3.13
+    - python
+    - python3
+    - python3.13
+  - include/
+    - python3.13/
+  - lib/
+    - python3.13/
+      - site-package/
+  - pyvenv.cfg
 - others/
   - NYSE_Fundamentals_Report.txt
 
