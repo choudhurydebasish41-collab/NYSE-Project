@@ -1,0 +1,39 @@
+Dataset Overview
+
+The NYSE Fundamentals dataset contains financial statement information for publicly traded companies listed on the New York Stock Exchange (NYSE). The dataset includes a broad range of financial indicators such as assets, liabilities, revenue, earnings, cash flow, debt, and profitability measures. These variables provide insight into the financial performance and health of companies across multiple reporting years and can be used for exploratory data analysis, financial modeling, and business performance evaluation.
+
+Dataset Dimensions
+
+The inspection process revealed that the dataset contains 1,781 records and 79 columns. The large number of rows provides a substantial amount of financial information across different companies and years, while the 79 columns represent a diverse set of financial metrics.
+
+Column Information
+
+The dataset contains numerous financial variables, including Accounts Payable, Accounts Receivable, Total Assets, Total Liabilities, Total Revenue, Net Income, Earnings Per Share, and many other accounting measures. These columns collectively describe a company's financial position, profitability, operational performance, and cash flow activities.
+
+Missing Values Analysis
+
+Most columns contained complete information; however, the columns For Year, Earnings Per Share, and Estimated Shares Outstanding contained missing entries. Identifying these missing values is important because incomplete data can affect the reliability of future analyses.
+
+Company Representation
+
+The ticker count analysis showed that the dataset contains financial records for 448 unique companies. Most companies appear multiple times because financial information is recorded across several years, allowing comparisons of company performance over time.
+
+First Five Records
+
+The first five rows of the dataset were examined using the head() function. These records provide a preview of the dataset structure and confirm that the data was loaded correctly.
+
+Last Five Records
+
+The final five rows of the dataset were examined using the tail() function. These records provide a view of the ending portion of the dataset and help verify that the complete file was successfully loaded.
+
+Data Types
+
+The dataset contains a combination of numerical and categorical variables. Most financial metrics are stored as float64 values, while columns such as Ticker Symbol and Period Ending are stored as object data types.
+
+Descriptive Statistics
+
+Descriptive statistics were generated to summarize the numerical variables in the dataset. Measures such as count, mean, standard deviation, minimum, maximum, and quartiles provide insight into the distribution and variability of financial metrics across companies.
+
+Data Cleaning
+
+To prepare the dataset for future analysis, rows containing missing values were removed using the dropna() function. The cleaned dataset was saved as a separate CSV file for further analysis and visualization.
