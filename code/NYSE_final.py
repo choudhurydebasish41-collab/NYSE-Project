@@ -104,6 +104,18 @@ df_clean["Debt_Group"] = pd.qcut(
 
 grouped_profit = df_clean.groupby("Debt_Group")["Net Income"].mean()
 
+df_clean = df_clean[df_clean["Net Income"] > 0]
+
+df_clean["Debt_Profit_Ratio"] = (
+    df_clean["Long-Term Debt"] /
+    df_clean["Net Income"]
+)
+
+yearly_ratio = (
+    df_clean.groupby("Year")["Debt_Profit_Ratio"]
+    .mean()
+)
+
 # -----------------------------
 # 5. ANALYSIS
 # -----------------------------
@@ -115,15 +127,6 @@ debt_margin_corr = df_clean["Debt_to_Equity"].corr(df_clean["Profit Margin"])
 # 6. GRAPHS
 # -----------------------------
 
-# plt.figure(figsize=(8, 6))
-# plt.scatter(df_clean["Debt_to_Equity"], df_clean["Net Income"])
-# plt.xlabel("Debt-to-Equity Ratio")
-# plt.ylabel("Net Income")
-# plt.title("Debt-to-Equity Ratio vs Net Income")
-# plt.tight_layout()
-# plt.savefig(figures_folder / "debt_to_equity_vs_net_income.png")
-# plt.close()
-
 plt.figure(figsize=(8, 6))
 grouped_profit.plot(kind="bar")
 plt.xlabel("Debt Group")
@@ -133,14 +136,7 @@ plt.tight_layout()
 plt.savefig(figures_folder / "average_net_income_by_debt_group.png")
 plt.close()
 
-# plt.figure(figsize=(8, 6))
-# plt.scatter(df_clean["Debt_to_Equity"], df_clean["Profit Margin"])
-# plt.xlabel("Debt-to-Equity Ratio")
-# plt.ylabel("Profit Margin")
-# plt.title("Debt-to-Equity Ratio vs Profit Margin")
-# plt.tight_layout()
-# plt.savefig(figures_folder / "debt_to_equity_vs_profit_margin.png")
-# plt.close()
+# --------------------------------------------
 
 plt.figure(figsize=(8, 6))
 
@@ -157,6 +153,21 @@ plt.ylabel("Net Income")
 plt.tight_layout()
 plt.savefig(
     figures_folder / "net_income_boxplot_by_debt_group.png"
+)
+plt.close()
+
+# --------------------------------------------
+
+plt.figure(figsize=(8, 6))
+yearly_ratio.plot(kind="bar")
+
+plt.title("Average Debt-to-Profit Ratio by Year")
+plt.xlabel("Year")
+plt.ylabel("Debt-to-Profit Ratio")
+
+plt.tight_layout()
+plt.savefig(
+    figures_folder / "debt_profit_ratio_by_year.png"
 )
 plt.close()
 
