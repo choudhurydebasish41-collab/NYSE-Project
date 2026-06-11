@@ -1,97 +1,159 @@
-# NYSE-Project
-Final project for SJS 2026 coding cohort
+# NYSE Financial Analysis Project
 
-## Project hypothesis
- This project explores financial data from companies listed on the New York Stock Exchange (NYSE) using the Kaggle NYSE dataset. The         objective is to inspect, clean, and analyze company fundamentals to better understand relationships between key financial metrics such      as assets, revenue, debt, and profitability. Initial data processing includes identifying missing values, generating descriptive            statistics, and creating a cleaned dataset for further analysis. A central hypothesis of this project is that companies with larger         total assets tend to generate higher net income, indicating a positive relationship between company size and profitability.
+Final Project for the SJS 2026 Coding Cohort
+
+## Overview
+
+This project analyzes financial statement data from companies listed on the New York Stock Exchange (NYSE) using the Kaggle NYSE Fundamentals dataset.
+
+The goal is to inspect, clean, transform, and analyze financial data to investigate the relationship between corporate debt and profitability. The project applies exploratory data analysis (EDA), data cleaning techniques, statistical analysis, and visualization to determine whether companies with higher debt levels tend to generate greater profits.
+
+---
+
+## Research Question
+
+**Is there a relationship between a company's debt level and its profit generation?**
+
+---
+
+## Key Findings
+
+- Companies were grouped into Low Debt, Medium Debt, and High Debt categories using the Debt-to-Equity Ratio.
+- High-debt companies showed slightly higher average net income than low-debt companies.
+- Correlation between Debt-to-Equity Ratio and Net Income: **0.0146**
+- Correlation between Debt-to-Equity Ratio and Profit Margin: **-0.0045**
+- Results suggest that debt level alone is not a strong predictor of profitability.
+
+---
 
 ## Dataset
-The dataset I use is the New York Stock Exchange from Kaggle.
 
-Fundamentals.csv contains company-level financial statement data for firms listed on the New York Stock Exchange (NYSE). The dataset includes key financial metrics such as total assets, liabilities, revenue, earnings, cash flow, and other accounting measures reported over multiple years. It provides a comprehensive view of the financial health and performance of publicly traded companies, making it useful for exploratory data analysis, financial modeling, profitability studies, and trend analysis.
+**Source:** Kaggle NYSE Fundamentals Dataset
 
-## Folder Structure
-- data/
-  - Fundamentals.csv
-  - securities.csv
-- figure/
-- codes/
-  - inspect_nyse.py
-- output/
-  - clean_fundamentals_output.csv
-  - fundamentals_inspection.txt
-- venv/
-  - bin/
-    - activate
-    - activate.csh
-    - activate.fish
-    - Activate.ps1
-    - f2yp
-    - numpy-config
-    - pip
-    - pip3
-    - pip3.13
-    - python
-    - python3
-    - python3.13
-  - include/
-    - python3.13/
-  - lib/
-    - python3.13/
-      - site-package/
-  - pyvenv.cfg
-- others/
-  - NYSE_Fundamentals_Report.txt
+The dataset contains company-level financial statement data for firms listed on the New York Stock Exchange (NYSE), including:
 
-## Data Inspection Variables and Their Purpose
-- df_shape (fundamentals_df.shape)
-  - Returns the overall dimensions of the dataset as (rows, columns).
-  - Example: (1781, 79) means the dataset contains 1,781 records and 79 features.
+- Total Assets
+- Total Liabilities
+- Total Equity
+- Long-Term Debt
+- Revenue
+- Net Income
+- Operating Income
+- Profit Margin
+- Cash Flow Metrics
 
-- row_count (fundamentals_df.shape[0])
-  - Returns the total number of rows in the dataset.
-  - Helps determine the size of the dataset.
+### Dataset Summary
 
-- column_count (fundamentals_df.shape[1])
-  - Returns the total number of columns in the dataset.
-  - Indicates how many variables or features are available for analysis.
+- **1,781** company-year records
+- **448** companies
+- **79** financial variables
 
-- column_names (fundamentals_df.columns)
-  - Lists all column names in the dataset.
-  - Useful for understanding what financial metrics are available.
+---
 
-- missing_values (fundamentals_df.isna().sum())
-  - Counts the number of missing values in each column.
-  - Helps identify data quality issues and columns that may require cleaning.
+## Methodology
 
-- head_val (fundamentals_df.head())
-  - Displays the first five rows of the dataset.
-  - Provides a quick preview of the data structure and contents.
+### Data Inspection
 
-- tail_val (fundamentals_df.tail())
-  - Displays the last five rows of the dataset.
-  - Helps verify the dataset was loaded correctly and inspect the ending records.
+The following inspection methods were used:
 
-- d_types_df (fundamentals_df.dtypes)
-  - Shows the data type of each column (integer, float, string, etc.).
-  - Useful for determining how each variable should be processed.
+- `head()`
+- `tail()`
+- `info()`
+- `describe()`
+- `shape`
+- `value_counts()`
 
-- df_desc (fundamentals_df.describe())
-  - Generates descriptive statistics for numerical columns.
-  - Includes count, mean, standard deviation, minimum value, maximum value, and quartiles.
-  - Helps summarize the overall distribution of the data.
+### Data Cleaning
 
-- ticker_count (fundamentals_df["Ticker Symbol"].value_counts())
-  - Counts how many records exist for each company ticker symbol.
-  - Helps understand the representation of companies within the dataset.
+- Removed missing values using `dropna()`
+- Removed duplicate records using `drop_duplicates()`
+- Converted data types using `astype()`
 
-- fundamentals_df_clean (fundamentals_df.dropna())
-  - Creates a cleaned version of the dataset by removing rows containing missing values.
-  - Used to prepare the data for further analysis.
+### Data Transformation
 
-- clean_fundamentals_output.csv
-  - Stores the cleaned dataset after removing missing values.
-  - Can be used for future analysis and visualization.
+- Created a Debt-to-Equity Ratio
+- Renamed selected columns using `rename()`
+- Sorted values using `sort_values()`
+- Aggregated data using `groupby()`
 
-- fundamentals_inspection.txt
-  - Contains a complete inspection report including dataset dimensions, missing values, data types, summary statistics, and sample records.
-  - Serves as documentation of the initial exploratory data analysis process.
+### Data Analysis
+
+- Correlation analysis
+- Debt-group comparison
+- Statistical summaries
+- Financial data visualization
+
+---
+
+## Visualizations
+
+The project generates the following visualizations:
+
+1. Average Net Income by Debt Group
+2. Debt-to-Equity Ratio vs Net Income
+3. Debt-to-Equity Ratio vs Profit Margin
+4. Net Income Distribution by Debt Group (Box Plot)
+
+---
+
+## Sample Visualizations
+
+### Net Income Distribution by Debt Group
+
+![Net Income Distribution by Debt Group](figures/net_income_boxplot_by_debt_group.png)
+
+This box plot shows the distribution of company net income across low-, medium-, and high-debt groups.
+
+---
+
+## Project Structure
+
+```text
+NYSE-Project/
+│
+├── data/
+│   ├── fundamentals.csv
+│   └── securities.csv
+│
+├── code/
+│   ├── inspect_nyse.py
+│   └── NYSE_final.py
+│
+├── figures/
+│   ├── average_net_income_by_debt_group.png
+│   ├── debt_to_equity_vs_net_income.png
+│   ├── debt_to_equity_vs_profit_margin.png
+│   └── net_income_boxplot_by_debt_group.png
+│
+├── results/
+│   ├── debt_profit_cleaned_data.csv
+│   └── debt_profit_analysis.txt
+│
+├── others/
+│   └── NYSE_Fundamentals_Report.txt
+│
+└── README.md
+```
+
+---
+
+## Technologies Used
+
+- Python
+- Pandas
+- Matplotlib
+- NumPy
+- Visual Studio Code
+
+---
+
+## Conclusion
+
+Although companies with higher debt levels exhibited slightly higher average net income, the correlation analysis revealed an almost nonexistent relationship between debt and profitability. The findings suggest that debt level alone does not explain company profit generation and that other financial factors likely play a more significant role.
+
+---
+
+## Author
+
+**Debasish Choudhury**  
+SJS 2026 Coding Cohort
