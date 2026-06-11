@@ -1,0 +1,64 @@
+Research Question:
+Is there a relationship between a company's debt level and its profit generation?
+
+Dataset Inspection:
+Shape: (1781, 79)
+Rows: 1781
+Columns: 79
+
+Missing Values:
+Unnamed: 0                        0
+Ticker Symbol                     0
+Period Ending                     0
+Accounts Payable                  0
+Accounts Receivable               0
+                               ... 
+Total Revenue                     0
+Treasury Stock                    0
+For Year                        173
+Earnings Per Share              219
+Estimated Shares Outstanding    219
+Length: 79, dtype: int64
+
+Ticker Counts:
+Ticker Symbol
+AAL     4
+NOV     4
+OMC     4
+OKE     4
+O       4
+       ..
+PYPL    3
+WRK     3
+AVGO    2
+MYL     2
+CSRA    2
+Name: count, Length: 448, dtype: int64
+
+Selected Columns:
+- Ticker Symbol
+- For Year
+- Total Liabilities
+- Total Equity
+- Long-Term Debt
+- Net Income
+- Operating Income
+- Profit Margin
+- Total Revenue
+
+Correlation Results:
+Debt-to-Equity vs Net Income correlation: 0.014643842755743618
+Debt-to-Equity vs Profit Margin correlation: -0.004453827761023136
+
+Average Net Income by Debt Group:
+Debt_Group
+Low Debt       1.709984e+09
+Medium Debt    1.726394e+09
+High Debt      1.788320e+09
+Name: Net Income, dtype: float64
+
+Conclusion Draft:
+This analysis compares company debt levels with profit generation. 
+Debt-to-equity ratio was used as the main debt measurement, while net income and profit margin were used as profitability 
+measurements. The correlation values and debt-group averages help determine whether companies with higher debt tend to 
+generate higher profits. If the correlation is weak, then debt level alone does not strongly explain profitability.
